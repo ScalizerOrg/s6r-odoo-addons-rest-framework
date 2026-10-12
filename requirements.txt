@@ -1,26 +1,8 @@
 # generated from manifests external_dependencies
-a2wsgi>=1.10.6
-apispec
-apispec>=4.0.0
-cerberus
-contextvars
-cryptography
-extendable-pydantic
-extendable-pydantic>=1.2.0
-extendable>=0.0.4
-fastapi>=0.110.0
-graphene
-graphql-server<3.0.0b8
+# Trimmed for the 16.0_cadres_en_mission fork: only auth_partner is installed
+# from this repo (no base_rest/fastapi/graphql_* stack), so only its own
+# external_dependencies (itsdangerous, pyjwt) are kept. The full upstream list
+# pulled in graphql-server<3.0.0b8, which has no distribution satisfying that
+# constraint on PyPI anymore and broke the odoo.sh build.
 itsdangerous
-jsondiff
-marshmallow
-marshmallow-objects>=2.0.0
-marshmallow<4.0.0
-parse-accept-language
-pydantic
-pydantic>=2.0.0
 pyjwt
-pyquerystring
-python-multipart
-typing-extensions
-ujson
