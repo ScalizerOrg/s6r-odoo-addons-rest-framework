@@ -96,7 +96,7 @@ class AuthPartner(models.Model):
             raise AccessDenied()
 
     def _get_hashed_password(self, directory, login):
-        self.flush()
+        self.env.flush_all()
         self.env.cr.execute(
             """
             SELECT id, COALESCE(encrypted_password, '')
