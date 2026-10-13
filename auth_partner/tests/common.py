@@ -42,13 +42,12 @@ class CommonTestAuthPartner(TransactionCase, MockEmail):
         class MailsProxy(mailmail.__class__):
             __slots__ = ["_prev", "__weakref__"]
 
-            def __init__(self, *args, **kwargs):
+            def __init__(self, env=None, ids=(), prefetch_ids=()):
                 # Deliberately does not call super().__init__(): this proxy
                 # only exists to diff mail.mail recordsets via
                 # __getattribute__ below, not to be a real model instance.
-                # The *args/**kwargs signature matches mail.mail's own
-                # __init__(env, ids, prefetch_ids) so Odoo's inherited-method
-                # signature check doesn't flag a mismatch.
+                # Odoo's MetaModel warns unless __init__ takes exactly the 4
+                # parameters (self, env, ids, prefetch_ids) of BaseModel.
                 object.__setattr__(self, "_prev", mailmail.search([]))
 
             def __getattribute__(self, name: str) -> Any:
